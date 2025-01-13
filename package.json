@@ -8,6 +8,9 @@
     "code": "ts-node src/BDDAndStepDefinitionGenerator.ts"
   },
   "keywords": [],
+  "bin": {
+    "create-nbddcucumber": "index.js"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
