@@ -1,0 +1,26 @@
+{
+  "name": "n_bddcucumber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "code": "ts-node src/BDDAndStepDefinitionGenerator.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.49.1",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "playwright": "^1.49.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
