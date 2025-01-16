@@ -7,25 +7,21 @@ const gitIgnorefile = require('./gitignore.js');
 function generateProjectStructure(projectName) {
     const projectPath = path.join(process.cwd(), projectName);
   
-    // Check if the project directory exists, if not, create it
     if (!fs.existsSync(projectPath)) {
       fs.mkdirSync(projectPath);
     }
 
-    // Define paths for subdirectories and files
     const srcPath = path.join(projectPath, 'src');
     const promptPath = path.join(projectPath, 'src/prompt');
-    const workflowsDir = path.join(projectPath, '.github/workflows');  // Missing workflowsDir definition
+    const workflowsDir = path.join(projectPath, '.github/workflows');
     const packageJsonPath = path.join(projectPath, 'package.json');
     const readMePath = path.join(projectPath, 'README.md');
     const gitIgnorePath = path.join(projectPath, '.gitignore');
     const envPath = path.join(projectPath, '.env');
-    const playwrightConfigPath = path.join(projectPath, 'playwright.config.ts');
 
-    // Create the required directories
-    fs.mkdirSync(srcPath, { recursive: true });
-    fs.mkdirSync(promptPath, { recursive: true });
-    fs.mkdirSync(workflowsDir, { recursive: true });
+    fs.mkdirSync(srcPath);
+    fs.mkdirSync(promptPath);
+    fs.mkdirSync(workflowsDir);
   
     // Create a basic package.json structure
     const playwrightTest = '@playwright/test';
@@ -55,10 +51,8 @@ function generateProjectStructure(projectName) {
         }
     };
 
-    // Write the package.json to the project path
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-    // Write the TypeScript and prompt files to the 'src' and 'src/prompt' directories
     const srcScript = srcfile.codeGen;
     fs.writeFileSync(path.join(srcPath, 'BDDAndStepDefinitionGenerator.ts'), srcScript);
 
@@ -68,7 +62,6 @@ function generateProjectStructure(projectName) {
     const sdPromptScript = promptfile.stepDefinitionPrompt;
     fs.writeFileSync(path.join(promptPath, 'stepDefinitionCodeGenPrompt'), sdPromptScript);
 
-    // Write .env and .gitignore files
     const envScript = srcfile.envData;
     fs.writeFileSync(envPath, envScript);
 
@@ -76,8 +69,5 @@ function generateProjectStructure(projectName) {
     fs.writeFileSync(gitIgnorePath, gitIgnoreScript);
 };
 
-// Initialize the project structure with the given name
 generateProjectStructure('n_bddcucumber');
-
-// Log the success message with the project name
 console.log(`Initialized project: n_bddcucumber`);
