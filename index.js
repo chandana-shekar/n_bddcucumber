@@ -57,10 +57,10 @@ function generateProjectStructure(projectName) {
     fs.writeFileSync(path.join(srcPath, 'BDDAndStepDefinitionGenerator.ts'), srcScript);
 
     const bddPromptScript = promptfile.bddPrompt;
-    fs.writeFileSync(path.join(promptPath, 'bddFeatureGenPrompt'), bddPromptScript);
+    fs.writeFileSync(path.join(promptPath, 'bddFeatureGenPrompt.ts'), bddPromptScript);
 
     const sdPromptScript = promptfile.stepDefinitionPrompt;
-    fs.writeFileSync(path.join(promptPath, 'stepDefinitionCodeGenPrompt'), sdPromptScript);
+    fs.writeFileSync(path.join(promptPath, 'stepDefinitionCodeGenPrompt.ts'), sdPromptScript);
 
     const envScript = srcfile.envData;
     fs.writeFileSync(envPath, envScript);
