@@ -23,7 +23,6 @@ function generateProjectStructure(projectName) {
     fs.mkdirSync(promptPath);
     fs.mkdirSync(workflowsDir);
   
-    // Create a basic package.json structure
     const playwrightTest = '@playwright/test';
     const tsNode = 'ts-node';
     const cucumber = '@cucumber/cucumber';
@@ -39,9 +38,7 @@ function generateProjectStructure(projectName) {
         dependencies: {
             [cucumber]: "^10.0.1",
             [playwrightTest]: "^1.32.2",
-            axios: "^1.7.9",
             dotenv: "^16.4.7",
-            fs: "^0.0.1-security",
             path: "^0.12.7",
             playwright: "^1.49.1",
             xlsx: "^0.18.5"
