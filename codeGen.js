@@ -97,7 +97,7 @@ async function getGPTResponse(systemPrompt : string , userPrompt: string) {
         {
           headers: {
             "Content-Type": "application/json",
-            "api-key": \`${api_key}\`,
+            "api-key": api_key,
             "Region" : "eastus2"
           }
         }
