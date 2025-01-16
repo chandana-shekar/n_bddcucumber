@@ -119,9 +119,9 @@ async function getGPTResponse(systemPrompt : string , userPrompt: string) {
   async function generateUseCasePrompt(useCasesWithTestData: { useCase: string; testData?: string[] }[]): Promise<string[]> {
     const useCasePrompts = useCasesWithTestData.map(({ useCase, testData }) => {
       if (testData && testData.length > 0) {
-        return \`${useCase}\nExample Test Data:\n${testData.join("\n")}\`;
+        return ${useCase}\nExample Test Data:\n${testData.join("\n")};
       } else {
-        return \`${useCase}\`; 
+        return ${useCase}; 
       }
     });
     return useCasePrompts;  
@@ -132,7 +132,7 @@ function saveToFile(fileName: string, content: string) {
   const downloadDir = path.join(os.homedir(), "Downloads");
   const outputPath = path.join(downloadDir, fileName);
   fs.writeFileSync(outputPath, content);
-  console.log(\`${fileName} saved to Downloads folder at ${outputPath}\`);
+  console.log(${fileName} saved to Downloads folder at ${outputPath});
 }
 
 // Main function
