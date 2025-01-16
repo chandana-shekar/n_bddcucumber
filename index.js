@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const srcfile = require('./codeGen.js')
 const promptfile = require('./prompt.js')
 const gitIgnorefile = require('./gitignore.js')
@@ -18,11 +20,6 @@ function generateProjectStructure(projectName) {
 
     fs.mkdirSync(srcPathPath);
     fs.mkdirSync(promptPath);
-    fs.mkdirSync(packageJsonPath);
-    fs.mkdirSync(playwrightConfigPath);
-    fs.mkdirSync(readMePath);
-    fs.mkdirSync(gitIgnorePath);
-    fs.mkdirSync(envPath);
     fs.mkdirSync(workflowsDir);
 
     const playwrightTest = '@playwright/test'
@@ -67,7 +64,7 @@ function generateProjectStructure(projectName) {
     fs.writeFileSync(envPath, envScript);
 
     const gitIgnoreScript = `${gitIgnorefile.gitIgnore}`;
-    fs.writeFileSync(gitIgnoreScript,gitIgnorePath);
+    fs.writeFileSync(gitIgnorePath,gitIgnoreScript);
 
 };
 
