@@ -21,7 +21,7 @@ export function generateBDDPrompt(useCasePrompts: string[]): { systemPrompt: str
     
     Here are the use cases you need to convert:
     
-    ${useCasePrompts.join("\n\n")}
+    useCasePrompts.join("\n\n")
     
     Make sure to:
     - Provide complete and logical steps for each scenario.
@@ -45,7 +45,7 @@ export function stepDefinitionCodeGenPrompt(bddSteps: string, htmlContent: strin
   
     const stepDefinitionUserPrompt = \`Please convert the following BDD steps into a Playwright Step Definition File in TypeScript. 
     The BDD steps: 
-    ${bddSteps}
+    bddSteps
     
     The step definition file should:
     - Use Playwright with TypeScript to generate the automation code for each BDD step.
@@ -61,7 +61,7 @@ export function stepDefinitionCodeGenPrompt(bddSteps: string, htmlContent: strin
     - The response should only contain code as it will be compiled directly.
     
     The HTML content of the page: 
-    ${htmlContent}
+    htmlContent
     
     Thank you.\`;
   
