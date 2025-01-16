@@ -74,10 +74,6 @@ function generateProjectStructure(projectName) {
 
     const gitIgnoreScript = gitIgnorefile.gitIgnore;
     fs.writeFileSync(gitIgnorePath, gitIgnoreScript);
-
-    // Optionally, you can also create a README.md and a playwright.config.ts if needed
-    fs.writeFileSync(readMePath, '# Project Readme');
-    fs.writeFileSync(playwrightConfigPath, 'module.exports = { /* Playwright config */ };');
 };
 
 // Initialize the project structure with the given name
