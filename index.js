@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
 const srcfile = require('./codeGen.js');
@@ -13,7 +14,7 @@ function generateProjectStructure(projectName) {
 
     const srcPath = path.join(projectPath, 'src');
     const promptPath = path.join(projectPath, 'src/prompt');
-    const workflowsDir = path.join(projectPath, '.github/workflows');
+    // const workflowsDir = path.join(projectPath, '.github/workflows');
     const packageJsonPath = path.join(projectPath, 'package.json');
     const readMePath = path.join(projectPath, 'README.md');
     const gitIgnorePath = path.join(projectPath, '.gitignore');
@@ -21,7 +22,7 @@ function generateProjectStructure(projectName) {
 
     fs.mkdirSync(srcPath);
     fs.mkdirSync(promptPath);
-    fs.mkdirSync(workflowsDir);
+    // fs.mkdirSync(workflowsDir);
   
     const playwrightTest = '@playwright/test';
     const tsNode = 'ts-node';

@@ -1,6 +1,6 @@
 {
   "name": "create-nbddcucumber",
-  "version": "1.0.9",
+  "version": "1.0.16",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,10 @@
   "bin": {
     "create-nbddcucumber": "index.js"
   },
+  "repository": {
+      "type": "git",
+      "url": "git+https://github.com/chandana-shekar/n_bddcucumber.git"
+    },
   "author": "",
   "license": "ISC",
   "dependencies": {
