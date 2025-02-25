@@ -1,21 +1,23 @@
 {
-  "name": "create-nbddcucumber",
-  "version": "1.0.16",
-  "description": "",
+  "name": "nilgiricucumber",
+  "version": "0.0.0",
+  "description": "This is Nilgiri framework which Help user to generate Bdd code with Playwright Script",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "code": "ts-node src/BDDAndStepDefinitionGenerator.ts"
   },
-  "keywords": [],
-  "bin": {
-    "create-nbddcucumber": "index.js"
-  },
+  "keywords": [
+    "bdd",
+    "cucumber",
+    "playwright",
+    "Tricon"
+  ],
   "repository": {
-      "type": "git",
-      "url": "git+https://github.com/chandana-shekar/n_bddcucumber.git"
-    },
-  "author": "",
+    "type": "git",
+    "url": "git+https://github.com/chandana-shekar/n_bddcucumber.git"
+  },
+  "author": "Chandana Sekhar",
   "license": "ISC",
   "dependencies": {
     "@cucumber/cucumber": "^11.2.0",
@@ -23,11 +25,10 @@
     "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "fs": "^0.0.1-security",
+    "gpt-3-encoder": "^1.1.4",
     "path": "^0.12.7",
     "playwright": "^1.49.1",
+    "ts-node": "^10.9.2",
     "xlsx": "^0.18.5"
-  },
-  "devDependencies": {
-    "ts-node": "^10.9.2"
   }
 }
