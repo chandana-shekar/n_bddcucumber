@@ -1,11 +1,12 @@
 {
   "name": "nilgiricucumber",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This is Nilgiri framework which Help user to generate Bdd code with Playwright Script",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "code": "ts-node src/BDDAndStepDefinitionGenerator.ts"
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "keywords": [
     "bdd",
