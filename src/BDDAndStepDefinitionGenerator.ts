@@ -175,7 +175,48 @@ async function generateChunkedCode(apiUrl: string, apiKey: string, systemPrompt:
 
   return stepDefinitionFile;
 }
-
+/**
+ * Generates BDD feature files and corresponding step definition files
+ * based on test cases from an Excel sheet. This method is the primary
+ * entry point for users to create automated BDD tests.
+ *
+ * ## **How It Works**
+ * 1. Reads use cases and test data from the provided Excel file.
+ * 2. Generates a `.feature` file with structured BDD scenarios.
+ * 3. Extracts relevant information from the target website.
+ * 4. Uses AI to generate step definitions in `.ts` format.
+ * 5. Saves the generated `output.feature` and `output.ts` in the project root.
+ *
+ * ---
+ * 📌 **Note:**  
+ * - Ensure that the Excel file follows the required format.
+ * - If AI-based step generation is enabled, make sure to provide a valid API key.
+ * - Generated files can be found in the project root directory.
+ *
+ * @param {Object} config - Configuration object containing all required parameters.
+ * @param {string} config.apiUrl - The endpoint URL for the AI service (if used).
+ * @param {string} config.apiKey - The API key for authentication (if required).
+ * @param {string} config.xlsxFilePath - The absolute or relative path to the Excel file.
+ * @param {string} config.websiteURL - The target web page URL for test case generation.
+ * 
+ * @returns {Promise<void>} Resolves when files are successfully generated.
+ *
+ * @example
+ * ```typescript
+ * import { generateTestFiles } from 'nilgiricucumber';
+ *
+ * const config = {
+ *   apiUrl: 'https://api.openai.com/v1/completions',
+ *   apiKey: 'sk-xxxxxx12345',
+ *   xlsxFilePath: 'test-cases.xlsx',
+ *   websiteURL: 'https://example.com'
+ * };
+ *
+ * generateTestFiles(config)
+ *   .then(() => console.log('BDD test files generated successfully!'))
+ *   .catch(err => console.error('Error:', err));
+ * ```
+ */
 export async function generateTestFiles(config: Config) {
   try {
     const useCasesWithTestData = readUseCasesFromExcel(config.xlsxFilePath);
