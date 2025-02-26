@@ -23,6 +23,7 @@ export function stepDefinitionCodeGenPrompt(bddSteps: string, htmlContent: strin
   - Do not include any extra lines at the beginning or end of your response.
   - Avoid any additional comments, explanations, or instructions in your response.
   - HTML content will be sent in chunks. Please do not generate the code until you receive the message to generate the code.
+  - Do not format the code as a code block. Please give the code without using Markdown backticks or other formatting.
   - Only generate code for the BDD steps provided and DO NOT generate code until you receive the explicit instruction to generate the code.
   - The response should only contain code as it will be compiled directly.
 

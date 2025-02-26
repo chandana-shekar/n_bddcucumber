@@ -1,6 +1,6 @@
 {
   "name": "nilgiricucumber",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "This is Nilgiri framework which Help user to generate Bdd code with Playwright Script",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/chandana-shekar/n_bddcucumber.git"
   },
-  "author": "Chandana Sekhar",
+  "author": "Chandana Shekar",
   "license": "ISC",
   "dependencies": {
     "@cucumber/cucumber": "^11.2.0",

@@ -4,7 +4,7 @@ import * as xlsx from "xlsx";
 import { chromium } from "playwright";
 import { generateBDDPrompt } from "./prompt/bddFeatureGenPrompt";
 import { stepDefinitionCodeGenPrompt } from "./prompt/stepDefinitionCodeGenPrompt";
-import { encode } from "gpt-3-encoder";  // Token encoder
+import { encode, decode } from "gpt-3-encoder"; 
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -139,14 +139,41 @@ async function generateUseCasePrompt(useCasesWithTestData: { useCase: string; te
     return useCasePrompts;
   }
 
+  async function chunkContent(content: string, maxTokens: number): Promise<string[]> {
+    const tokens = encode(content);
+    console.log('tokens:', tokens.length);
+    const chunks: string[] = [];
+    let tempChunk: number[] = [];
+  
+    for (let i = 0; i < tokens.length; i++) {
+      tempChunk.push(tokens[i]);
+      if (tempChunk.length >= maxTokens) {
+        chunks.push(decode(tempChunk));
+        tempChunk = [];
+      }
+    }
+  
+    if (tempChunk.length > 0) {
+      chunks.push(decode(tempChunk));
+    }
+    console.log('tempChunk:', tempChunk.length);
+    return chunks;
+}
+
 async function generateChunkedCode(apiUrl: string, apiKey: string, systemPrompt: string, userPrompt: string, maxTokens: number): Promise<string> {
-  let generatedCode = "";
-  while (countTokens(generatedCode) < maxTokens) {
-    const chunk = await getGPTResponse(apiUrl, apiKey, systemPrompt, userPrompt);
-    if (!chunk) break;
-    generatedCode += "\n" + chunk;
+  let stepDefinitionFile = '';
+  const chunkedPrompts = await chunkContent(userPrompt, maxTokens);
+    let i = 1;
+  for (let chunk of chunkedPrompts) {
+    stepDefinitionFile = '';
+    console.log(`Generating chunk with ${countTokens(chunk)} tokens...`);
+    console.log(`Request ${i++} out of ${chunkedPrompts.length}`);
+    const chunkWithLabel = `This is chunk ${i}:\n\n${chunk}`;
+    const response = await getGPTResponse(apiUrl, apiKey, systemPrompt, chunkWithLabel);
+    stepDefinitionFile += response;
   }
-  return generatedCode;
+
+  return stepDefinitionFile;
 }
 
 export async function generateTestFiles(config: Config) {
