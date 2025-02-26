@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/chandana-shekar/n_bddcucumber/main/logo/Nilgiri_cucumber.png" alt="Nilgiri BDD Cucumber Logo" width="200"/>
 </p>
-<h1 align="center">Nilgiri BDD Cucumber</h1>
+<h1 align="center">Nilgiri Framework</h1>
 <p align="center">
     <a href="https://npmjs.com/package/nilgiricucumber">
         <img src="https://img.shields.io/npm/v/nilgiricucumber.svg" alt="npm version">
