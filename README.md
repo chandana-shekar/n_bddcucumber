@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/chandana-shekar/n_bddcucumber/main/logo/Nilgiri_cucumber.png" alt="Nilgiri BDD Cucumber Logo" width="200"/>
 </p>
-<h1 align="center">Nilgiri BDD Cucumber Framework</h1>
+<h1 align="center">Nilgiri BDD Cucumber</h1>
 <p align="center">
     <a href="https://npmjs.com/package/nilgiricucumber">
         <img src="https://img.shields.io/npm/v/nilgiricucumber.svg" alt="npm version">
@@ -44,7 +44,14 @@ npm install nilgiricucumber@latest --save-dev
 ```
 
 ### **Step 2: Generate BDD Test Files**
-To generate feature files and step definitions, use the `generateTestFiles` function.
+
+To run the `generateTestFiles` method, import and call it in your script:
+
+Example: Create new test.ts file and copy paste the below example code ,
+
+replace your `apiUrl`, `apiKey` , `xlsxFilePath` and `websiteURL` with correct values .
+
+
 
 Example usage:
 ```typescript
@@ -87,8 +94,32 @@ generateTestFiles(config)
 ```bash
 npx ts-node <your-file-name>.ts
 ```
+### **📂 Where to Find the AI Generated Test Scripts ?**
 
----
+
+After running generateTestFiles(config), the following files will be created:
+
+`output.feature` - This contains the generated Cucumber feature file with test scenarios.
+
+`output.ts` - This is the Step Definition file that maps steps from the feature file to Playwright test actions.
+
+📌 Location of Generated Files
+
+These files will be saved in your project root folder or the default output directory based on your system settings.
+
+✅ How to View the Files?
+
+Open your file explorer and navigate to the project directory.
+
+In VSCode or any IDE, check the left-hand file explorer.
+
+Run the following command in your terminal to confirm the files exist:
+```bash
+ls -l output.*
+```
+
+📌 **Note:** You can now review and modify the generated test files before executing them.
+
 
 <h1 align="center"> Features of Nilgiri Cucumber</h1>
 
