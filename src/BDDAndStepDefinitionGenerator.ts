@@ -94,7 +94,6 @@ async function getGPTResponse(apiUrl: string, apiKey: string, systemPrompt: stri
       );
 
       const assistantMessage = response.data.choices[0].message.content.trim();
-      console.log(assistantMessage);
       return assistantMessage;
 
     } catch (error) {
@@ -219,14 +218,17 @@ async function generateChunkedCode(apiUrl: string, apiKey: string, systemPrompt:
  */
 export async function generateTestFiles(config: Config) {
   try {
+    console.log("Reading use cases from Excel...");
     const useCasesWithTestData = readUseCasesFromExcel(config.xlsxFilePath);
     const useCasePrompt = await generateUseCasePrompt(useCasesWithTestData);
     const { systemPrompt, userPrompt } = generateBDDPrompt(useCasePrompt);
+    console.log("Generating BDD steps...");
     const bddSteps = await getGPTResponse(config.apiUrl, config.apiKey, systemPrompt, userPrompt);
     const htmlContent = await getHtmlFromPage(config.websiteURL);
     const { stepDefinitionSystemPrompt, stepDefinitionUserPrompt } = stepDefinitionCodeGenPrompt(bddSteps, htmlContent);
 
     const maxTokens = 20000;
+    console.log("Generating step definition files...");
     const stepDefinitionFile = await generateChunkedCode(config.apiUrl, config.apiKey, stepDefinitionSystemPrompt, stepDefinitionUserPrompt, maxTokens);
 
     saveToFile("output1.feature", bddSteps);
