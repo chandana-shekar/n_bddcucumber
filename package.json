@@ -1,6 +1,6 @@
 {
   "name": "nilgiricucumber",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "This is Nilgiri framework which Help user to generate Bdd code with Playwright Script",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
